@@ -1,0 +1,143 @@
+/*----------------------------------------------------------------------
+UFENG THEME - FULLCALENDAR
+Built using ufeng.scss
+----------------------------------------------------------------------*/
+
+// import colors
+@import '../../library/scss/_colors';
+
+// import mixins
+@import '../../library/scss/_mixins';
+
+#wpfc-calendar tbody {
+	border:none;
+}
+// Header
+
+.fc-header td {
+	background-color: $white !important;
+	font-family: $sans, Helvetica, Arial, sans-serif;
+}
+.fc-today {
+	background-color: $orange !important;
+}
+.fc-event {
+	font-family: $sans, Helvetica, Arial, sans-serif;
+}
+.fc-button-content {
+	height: 30px;
+	line-height: 30px;
+}
+.fc-button-next {
+	background: transparent url(../../images/bg-sprite-transparent.png) -59px -184px no-repeat;
+	padding:0;
+	width: 30px;
+	height: 30px;
+}
+.fc-button-prev {
+	@extend .fc-button-next;
+	background-position: -14px -184px;
+}
+.ui-selectmenu-button {
+	display: inline-block;
+	overflow: hidden;
+	position: relative;
+	text-decoration: none;
+	cursor: pointer;
+	.ui-icon {
+		background: transparent url(../../images/bg-sprite-transparent.png) -103px -178px no-repeat;
+		width:20px;
+		height:20px;
+		right: 0.5em;
+		left: auto;
+		margin-top: -8px;
+		position: absolute;
+		top: 50%;
+	}
+	.ui-selectmenu-text {
+		padding: 0.4em 2.1em 0.4em 1em;
+		display: block;
+		line-height: 1.4;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+}
+.ui-selectmenu-menu {
+	font-family: $sans, Helvetica, Arial, sans-serif;padding: 0;
+	margin: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+	.ui-menu {
+		overflow: auto;
+		padding:0;
+		.ui-menu-item {
+			position: relative;
+			margin: 0;
+			padding: 3px 1em 3px .4em;
+			cursor: pointer;
+		}
+	}
+	.ui-state-focus {
+		border:none !important;
+	}
+}
+.ui-selectmenu-open {
+	display: block;
+	z-index:99;
+}
+
+
+// Calendar table
+.fc-grid {
+	thead {
+		border: 1px solid $black-75;
+	}
+	th {
+		padding: 0.5em 0;
+	}
+}
+.ui-widget-content {
+	background-color: $very-light-blue;
+	border:1px solid $black-75;
+}
+
+
+/* Interaction states
+----------------------------------*/
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { 
+	border: 1px solid $black-75; 
+	background-color: $black-95; 
+	font-weight: bold; 
+	color: $dark-blue; 
+}
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { 
+	color: $dark-blue; 
+	text-decoration: none; 
+}
+.ui-state-hover, .ui-widget-content .ui-state-hover, 
+.ui-widget-header .ui-state-hover, 
+.ui-state-focus, .ui-widget-content .ui-state-focus, 
+.ui-widget-header .ui-state-focus,
+article a.ui-state-hover { 
+	border: 1px solid $black-50; 
+	background-color: $black-50; 
+	color: $white; 
+}
+.ui-state-hover a, .ui-state-hover a:hover { 
+	color: $white; 
+	text-decoration: none; 
+}
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { 
+	border: 1px solid $black-75; 
+	background-color: $white; 
+	font-weight: bold; 
+	color: $orange; 
+}
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { 
+	color: $orange; 
+	text-decoration: none; 
+}
+.ui-widget :active { outline: none; }

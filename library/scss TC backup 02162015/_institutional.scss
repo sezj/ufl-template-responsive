@@ -1,0 +1,159 @@
+/*-  INSTITUTIONAL NAVIGATION
+----------------------------------------------------------------------*/
+
+#institutional-nav {
+	border-top:2px solid $orange;
+	background-color: $dark-blue;
+	border-bottom: 1px solid $light-blue;
+	height: 27px;
+//  font-size: .9em;
+  padding-left: 0;
+  position: relative;
+  z-index: 99999 !important;
+}
+
+#institutional-nav #inst-home a {
+  border: none;
+  width:125px;
+}
+
+#institutional-nav .container {
+	top: 2px;
+	position: relative;
+}
+
+#institutional-nav li {
+  float: left;
+	height: 23px;
+}
+
+#institutional-nav a {
+	display: block;
+  position: relative;
+  padding: 0; /* 22px;*/
+  text-decoration: none;
+}
+
+#inst-home a {
+  padding: 0;
+  width: 118px;
+}
+
+#inst-home img {
+  position: absolute;
+  top: -2px;
+  margin-left:-4px;
+  left: 0;
+  z-index: 100000;
+}
+
+#institutional-nav li.social {
+	float:right;
+}
+.social li {
+	float: left;
+	background-position: center center;
+	background-repeat: none;
+	margin-left: 5px;
+}
+
+.social a  {
+	height: 21px;
+	width: 20px;
+	background-position: center center;
+	background-repeat: none;
+}
+
+.social .facebook {
+	background: transparent url(images/bg-sprite-transparent.png) -499px -19px no-repeat;
+}
+
+.social .twitter {
+	background: transparent url(images/bg-sprite-transparent.png) -552px -19px no-repeat;
+}
+
+.social .youtube {
+	background: transparent url(images/bg-sprite-transparent.png) -527px -19px no-repeat;
+}
+.social .linkedin {
+	background: transparent url(images/bg-sprite-transparent.png) -474px -19px no-repeat;
+}
+
+
+/*-  INSTITUTIONAL FOOTER
+----------------------------------------------------------------------*/
+
+#institutional-footer {
+	background: $white url(images/bg-institutional-footer-wrap.jpg) 0 top repeat-x;
+}
+
+#institutional-footer .container {
+	position: relative;
+	padding: 8px 0 20px 0;
+}
+#footer_container {
+	float: left;
+	width: 100%;
+}
+#footer-links {
+	border: 1px solid $light-blue;
+	border-left: 0;
+	border-right: 0;
+	border-bottom: 0;
+	padding-top: 7px;
+	text-align: left;
+	margin-left: 0px;
+	width: 100%;
+	ul {
+		padding-left: 0;
+		display: block;
+		margin-bottom: 10px;
+		margin-bottom: 0;
+		overflow: hidden;
+	}
+	li {
+		background: transparent url(images/bg-sprite-flat.jpg) -430px -7px no-repeat;
+		padding-left: 20px;
+		font-size: .85em;
+		line-height: 1.5em;
+		float: left;
+		border-right: 1px solid $black-50;
+		&:last-child {
+			border: none;
+		}
+	}
+}
+
+#footer-links li, #footer-links p {
+	background: none;
+	padding: 0 10px 0 0;
+	margin-right: 10px;
+	margin-top: 6px;
+	margin-bottom: 0;
+}
+.ie7 #branding p {
+	font-size: .75em;
+}
+.footer_logo {
+	width:100%;
+	float:left;
+	padding: 15px 0;
+}
+.uf-logo {
+  margin: 0 50px 0 20px;
+  width:210px;
+  height:50px;
+}
+.gift {
+	float:right;
+	margin:0;
+	padding-bottom: 10px;
+	width:205px;
+	height:64px;
+}
+.online-store {
+	float:right;
+	margin:0 20px;
+	width:210px;
+	height:75px;
+}
