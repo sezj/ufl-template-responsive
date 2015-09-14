@@ -20,16 +20,18 @@ $required = apply_filters('em_required_html','<em>*</em>');
 		<input class="em-date-end em-date-input-loc" type="text" />
 		<input class="em-date-input" type="hidden" name="event_end_date" value="<?php echo $EM_Event->event_end_date ?>" />
 	</p>
+	<p>Please change the event start and end times to reflect the start and end times of your event.</p>
 	<p>
-		<span class="em-recurring-text"><?php _e('Event start time:','dbem'); ?><?php echo $required; ?></span>
-		<span class="em-event-text"><?php _e('Event start time:','dbem'); ?><?php echo $required; ?></span>
-		<!-- <input id="start-time" class="em-time-input em-time-start" type="text" size="8" maxlength="8" name="event_start_time" value="<?php echo date( $hours_format, $EM_Event->start ); ?>" />  -->
-		<input id="start-time" class="em-time-input em-time-start" type="text" size="8" maxlength="8" name="event_start_time" /> 
-		<?php _e('end time','dbem'); ?><?php echo $required; ?>
-		<!-- <input id="end-time" class="em-time-input em-time-end" type="text" size="8" maxlength="8" name="event_end_time" value="<?php echo date( $hours_format, $EM_Event->end ); ?>" /> -->
-		<input id="end-time" class="em-time-input em-time-end" type="text" size="8" maxlength="8" name="event_end_time" />
 		<?php _e('All day','dbem'); ?> <input type="checkbox" class="em-time-allday" name="event_all_day" id="em-time-all-day" value="1" <?php if(!empty($EM_Event->event_all_day)) echo 'checked="checked"'; ?> />
+		<span class="em-time-entry">
+			<span class="em-recurring-text"><?php _e('Event start time:','dbem'); ?><?php echo $required; ?></span>
+			<span class="em-event-text"><?php _e('Event start time:','dbem'); ?><?php echo $required; ?></span>
+			<input id="start-time" class="em-time-input em-time-start" type="text" size="8" maxlength="8" name="event_start_time" value="09:00 AM" /> 
+			<?php _e('End time:','dbem'); ?><?php echo $required; ?>
+			<input id="end-time" class="em-time-input em-time-end" type="text" size="8" maxlength="8" name="event_end_time" value="09:00 AM" />
+		</span>
 	</p>
+	
 	<div class="em-recurring-text">
 		<p>
 			<?php _e ( 'This event repeats', 'dbem' ); ?> 
@@ -86,6 +88,15 @@ $required = apply_filters('em_required_html','<em>*</em>');
 			}
 		});
 		$('#em-recurrence-checkbox').trigger('change');
+
+		$('#em-time-all-day').change(function(){
+			if( $('#em-time-all-day').is(':checked') ){
+				$('.em-time-entry').hide();
+			}else{
+				$('.em-time-entry').show();						
+			}
+		});
+		$('#em-time-all-day').trigger('change');
 	});
 	//]]>
 	</script>
