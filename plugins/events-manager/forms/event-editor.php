@@ -15,7 +15,7 @@ if( is_object($EM_Event) && !$EM_Event->can_manage('edit_events','edit_others_ev
 }elseif( !is_object($EM_Event) ){
 	$EM_Event = new EM_Event();
 }
-$required = apply_filters('em_required_html','<i>*</i>');
+$required = apply_filters('em_required_html','<em>*</em>');
 
 echo $EM_Notices;
 //Success notice
@@ -53,9 +53,9 @@ if( !empty($_REQUEST['success']) ){
 		<?php 
 			if( empty($EM_Event->event_id) && $EM_Event->can_manage('edit_recurring_events','edit_others_recurring_events') && get_option('dbem_recurrence_enabled') ){
 				em_locate_template('forms/event/when-with-recurring.php',true);
-			}elseif( $EM_Event->is_recurring()  ){
+			} elseif( $EM_Event->is_recurring()  ){
 				em_locate_template('forms/event/recurring-when.php',true);
-			}else{
+			} else{
 				em_locate_template('forms/event/when.php',true);
 			}
 		?>
