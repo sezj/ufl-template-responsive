@@ -20,8 +20,7 @@ $required = apply_filters('em_required_html','<em>*</em>');
 		<input class="em-date-end em-date-input-loc" type="text" />
 		<input class="em-date-input" type="hidden" name="event_end_date" value="<?php echo $EM_Event->event_end_date ?>" />
 	</p>
-	<p>Please change the event start and end times to reflect the start and end times of your event.</p>
-	<p>
+	<p><em>Please change the event start and end times to reflect the start and end times of your event.</em><br />
 		<?php _e('All day','dbem'); ?> <input type="checkbox" class="em-time-allday" name="event_all_day" id="em-time-all-day" value="1" <?php if(!empty($EM_Event->event_all_day)) echo 'checked="checked"'; ?> />
 		<span class="em-time-entry">
 			<span class="em-recurring-text"><?php _e('Event start time:','dbem'); ?><?php echo $required; ?></span>
