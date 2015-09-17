@@ -5,7 +5,7 @@
 		<li id="inst-home"><a href="http://www.ufl.edu/"><img src="<?php bloginfo('template_url'); ?>/images/uf_inst_logo.png" alt="UF Home" title="UF Home"></a></li>
 		<?php 
 		} else { ?>
-		<li id="inst-home"><a href="/"><img src="<?php bloginfo('template_url'); ?>/images/ufeng_inst_logo.png" title="Gator Engineering Home" alt="Gator Engineering Home"></a></li>
+		<li id="inst-home"><a href="/"><img src="<?php bloginfo('template_url'); ?>/images/hweng_inst_logo.png" title="Gator Engineering Home" alt="Gator Engineering Home"></a></li>
 
 		<?php
 		}

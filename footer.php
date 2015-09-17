@@ -26,7 +26,7 @@ $opt_footer_widgets_visibility = of_get_option("opt_footer_widgets_visibility");
 						$contact_name = of_get_option("opt_contact_name");
 						if(!empty($contact_name)) { 
 							echo "<p>".$contact_name."<br />";
-						} else {echo "<p>University of Florida College of Engineering<br />";
+						} else {echo "<p>Herbert Wertheim College of Engineering<br />";
 						} 
 				
 						$contact_physical = of_get_option("opt_contact_physical");
