@@ -678,6 +678,7 @@ function be_display_posts_shortcode($atts) {
 		'include_date' => false,
 		'dateformat' => 'l, F jS, Y',
 		'include_excerpt' => false,
+		'include_content' => false,
 		'image_size' => false,
 		'wrapper' => 'div',
 		'taxonomy' => false,
@@ -764,10 +765,18 @@ function be_display_posts_shortcode($atts) {
 		
 		if ($include_excerpt) $excerpt = '<p>' . get_the_excerpt() . '</p>';
 		else $excerpt = '';
+
+		if( $include_content ) {
+			add_filter( 'shortcode_atts_display-posts', 'be_display_posts_off', 10, 3 );
+			/** This filter is documented in wp-includes/post-template.php */
+			$content = '<div class="content">' . apply_filters( 'the_content', get_the_content() ) . '</div>';
+			remove_filter( 'shortcode_atts_display-posts', 'be_display_posts_off', 10, 3 );
+		}
+		else $content = '';
 		
-		$output = '<' . $inner_wrapper . ' class="listing-item">' . $image . $title . $date . $excerpt . '</' . $inner_wrapper . '>';
+		$output = '<' . $inner_wrapper . ' class="listing-item">' . $image . $title . $date . $excerpt . $content . '</' . $inner_wrapper . '>';
 		
-		$inner .= apply_filters( 'display_posts_shortcode_output', $output, $atts, $image, $title, $date, $excerpt, $inner_wrapper );
+		$inner .= apply_filters( 'display_posts_shortcode_output', $output, $atts, $image, $title, $date, $excerpt, $content, $inner_wrapper );
 		
 	endwhile; wp_reset_query();
 	
