@@ -664,7 +664,6 @@ function wp_mcTagMap_renderDivider($count, $rowNum) {
 // From: http://www.billerickson.net/shortcode-to-display-posts/
 add_shortcode('display-posts', 'be_display_posts_shortcode');
 function be_display_posts_shortcode($atts) {
-
 	// Pull in shortcode attributes and set defaults
 	extract( shortcode_atts( array(
 		'post_type' => 'post',
