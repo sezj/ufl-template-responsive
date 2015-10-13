@@ -239,19 +239,21 @@ function ufandshands_header_adder() {
 	}
 
 	echo "<link rel='apple-touch-icon' href='" . $bloginfo_url . "/apple-touch-icon.png'>\n";
+
+	echo "<link rel='shortcut icon' href='" . $bloginfo_url . "/favicon.ico' />\n";
 	
 	//custom fav icon based on the parent organization
 	//default favicon.ico is the '&'
-	switch ($parent_org) {
-		case "UF Academic Health Center":
-			echo "<link rel='shortcut icon' href='" . $bloginfo_url . "/favicon-ahc.ico' />\n";
-			break;
-		case "Shands HealthCare":
-			echo "<link rel='shortcut icon' href='" . $bloginfo_url . "/favicon-shands.ico' />\n";
-			break;
-		default:
-			echo "<link rel='shortcut icon' href='" . $bloginfo_url . "/favicon.ico' />\n";
-	}
+	// switch ($parent_org) {
+	// 	case "UF Academic Health Center":
+	// 		echo "<link rel='shortcut icon' href='" . $bloginfo_url . "/favicon-ahc.ico' />\n";
+	// 		break;
+	// 	case "Shands HealthCare":
+	// 		echo "<link rel='shortcut icon' href='" . $bloginfo_url . "/favicon-shands.ico' />\n";
+	// 		break;
+	// 	default:
+	// 		echo "<link rel='shortcut icon' href='" . $bloginfo_url . "/favicon.ico' />\n";
+	// }
 
 	// meta description - display post/page excerpt for SEO 
 	if (is_page() || is_single()) {
@@ -983,7 +985,7 @@ function ufandshands_site_title() {
 	} elseif ($parent_org == "University of Florida" && !empty($ufandshands_alternate_logo)) {
 		$parent_org_logo = "alt";
 		$header_title_text_right_class_size = " ";
-		$parent_org = $site_title;
+		$parent_org = strip_tags($site_title);
 	}  else {
 		$parent_org_logo = "uf";
 		$parent_org = "University of Florida";
