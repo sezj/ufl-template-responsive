@@ -747,7 +747,7 @@ $college_inst_data = array(
 				"facebook" => "https://www.facebook.com/gatorengineering",
 				"twitter" => "https://twitter.com/floridaengineer/",
 				"youtube" => "https://www.youtube.com/user/gatorengineering",
-				"linkedin" => "https://www.linkedin.com/profile/view?id=180967085",
+				"linkedin" => "https://www.linkedin.com/grp/home?gid=8412066",
 				"instagram" => "https://instagram.com/gatorengineering/",
 				"flickr" => "https://www.flickr.com/photos/gatorengineering/"
 	)
@@ -974,18 +974,17 @@ function ufandshands_site_title() {
 	// Begin to build $title string
 	$title = "<div id='header-title' class='alpha omega span-15'><a href='" . get_bloginfo('url') . "' title='" . get_bloginfo('name') . "'>";
 
-	// Build logo of parent organization
+	//Build logo of parent organization
 	$parent_org = of_get_option("opt_parent_colleges_institutes");
+
 	if ($parent_org == "University of Florida" && empty($ufandshands_alternate_logo)) {
 		$parent_org_logo = "uf";
 		$header_title_text_right_class_size = "";
 	} elseif ($parent_org == "University of Florida" && !empty($ufandshands_alternate_logo)) {
 		$parent_org_logo = "alt";
 		$header_title_text_right_class_size = " ";
-	} elseif ($parent_org == "None") {
-		$parent_org_logo = "none";
-		$header_title_text_right_class_size = " ";
-	} else {
+		$parent_org = $site_title;
+	}  else {
 		$parent_org_logo = "uf";
 		$parent_org = "University of Florida";
 		$header_title_text_right_class_size = "";

@@ -108,7 +108,7 @@ $opt_footer_widgets_visibility = of_get_option("opt_footer_widgets_visibility");
 								echo "<a href='https://www.uff.ufl.edu/OnlineGiving/FundDetail.asp?FundCode=000661'>";
 							}
 						?>Make a Gift</a></li>
-	 					<li><a href="/about/powering/" title="We are Powering the New Engineer" class="pne ir">We are Powering the New Engineer</a></li>
+	 					<li><a href="/about/transformation/" title="Powering the New Engineer to Transform the Future" class="pnetf ir">Powering the New Engineer to Transform the Future</a></li>
 	 				</ul>
 							
 	 			</div>

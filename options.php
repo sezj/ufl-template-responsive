@@ -24,9 +24,6 @@ function optionsframework_options() {
 	
 	$parent_colleges_institutes = array(
 		"University of Florida" => "University of Florida",
-		"Information Technology" => "Information Technology",
-		"UF Academic Health Center" => "UF Academic Health Center",
-		"Shands HealthCare" => "Shands HealthCare",
 		"None" => "None"
 	);
 	
