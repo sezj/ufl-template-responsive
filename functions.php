@@ -241,19 +241,6 @@ function ufandshands_header_adder() {
 	echo "<link rel='apple-touch-icon' href='" . $bloginfo_url . "/apple-touch-icon.png'>\n";
 
 	echo "<link rel='shortcut icon' href='" . $bloginfo_url . "/favicon.ico' />\n";
-	
-	//custom fav icon based on the parent organization
-	//default favicon.ico is the '&'
-	// switch ($parent_org) {
-	// 	case "UF Academic Health Center":
-	// 		echo "<link rel='shortcut icon' href='" . $bloginfo_url . "/favicon-ahc.ico' />\n";
-	// 		break;
-	// 	case "Shands HealthCare":
-	// 		echo "<link rel='shortcut icon' href='" . $bloginfo_url . "/favicon-shands.ico' />\n";
-	// 		break;
-	// 	default:
-	// 		echo "<link rel='shortcut icon' href='" . $bloginfo_url . "/favicon.ico' />\n";
-	// }
 
 	// meta description - display post/page excerpt for SEO 
 	if (is_page() || is_single()) {
