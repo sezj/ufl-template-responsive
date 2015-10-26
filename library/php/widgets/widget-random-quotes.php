@@ -3,7 +3,7 @@
 class UFCOM_random_quotes extends WP_Widget {
 	function UFCOM_random_quotes() {
 		$widget_ops = array('classname' => 'widget_ufcom_random_quotes', 'description' => 'Insert 3 random quotes or testimonials' );
-		$this->WP_Widget('UFCOM_random_quotes', 'Random Quotes or Testimonials', $widget_ops);
+		parent::__construct('UFCOM_random_quotes', __('Random Quotes or Testimonials'), $widget_ops);
 	}
  
 	function widget($args, $instance) {

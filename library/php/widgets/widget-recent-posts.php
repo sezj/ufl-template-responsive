@@ -3,7 +3,7 @@
 class UFCOM_recent_posts extends WP_Widget {
 	function UFCOM_recent_posts() {
 		$widget_ops = array('classname' => 'widget_ufcom_recent_posts sidebar_widget', 'description' => 'Your most recent posts' );
-		$this->WP_Widget('UFCOM_recent_posts', 'Recent Posts', $widget_ops);
+		parent::__construct('UFCOM_recent_posts', __('Recent Posts'), $widget_ops);
 	}
  
 	function widget($args, $instance) {

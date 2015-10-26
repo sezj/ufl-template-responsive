@@ -16,8 +16,12 @@
 		$slider_number_of_posts = $featured_cat_number_of_posts;
 	}
 	
-	$slider_feature_posts = new WP_Query();
-	$slider_feature_posts->query("showposts=". $slider_number_of_posts . "&cat=" . $featured_category_id . "");
+	// $slider_feature_posts = new WP_Query();
+	// $slider_feature_posts->query("showposts=". $slider_number_of_posts . "&cat=" . $featured_category_id . "");
+	
+	$slider_feature_posts = new WP_Query( array('posts_per_page' => $slider_number_of_posts, 'cat' => $featured_category_id ) );
+	
+	// $slider_feature_posts->query("posts_per_page=". $slider_number_of_posts . "&cat=" . $featured_category_id . "");
 	$slider_feature_counter = 1;
 ?>
 <script type="text/javascript">var sliderSpeed = <?php echo (empty($slider_speed) ? 7000 : esc_html($slider_speed)); ?></script> 

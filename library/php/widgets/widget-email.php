@@ -3,7 +3,7 @@
 class UFCOM_emailcontact extends WP_Widget {
 	function UFCOM_emailcontact() {
 		$widget_ops = array('classname' => 'widget_ufcom_emailcontact', 'description' => 'Email Contact Form' );
-		$this->WP_Widget('UFCOM_emailcontact', 'Email Contact Form', $widget_ops);
+		parent::__construct('UFCOM_emailcontact', __('Email Contact Form'), $widget_ops);
 	}
 
 	function widget($args, $instance) {

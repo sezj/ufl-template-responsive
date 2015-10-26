@@ -3,7 +3,7 @@
 class UFCOM_image extends WP_Widget {
 	function UFCOM_image() {
 		$widget_ops = array('classname' => 'widget_ufcom_image', 'description' => 'Insert an image' );
-		$this->WP_Widget('UFCOM_image', 'Image', $widget_ops);
+		parent::__construct('UFCOM_image', __('Image'), $widget_ops);
 	}
  
 	function widget($args, $instance) {

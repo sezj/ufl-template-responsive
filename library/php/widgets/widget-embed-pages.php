@@ -3,7 +3,7 @@
 class UFCOM_embed_pages extends WP_Widget {
 	function UFCOM_embed_pages() {
 		$widget_ops = array('classname' => 'widget_ufcom_embed_pages', 'description' => 'Insert a page\'s content into your widget' );
-		$this->WP_Widget('UFCOM_embed_pages', 'Insert Page Content', $widget_ops);
+		parent::__construct('UFCOM_embed_pages', __('Insert Page Content'), $widget_ops);
 	}
  
 	function widget($args, $instance) {
