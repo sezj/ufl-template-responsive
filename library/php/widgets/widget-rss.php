@@ -4,7 +4,7 @@ class UFandShands_WP_Widget_RSS extends WP_Widget {
 
     function UFandShands_WP_Widget_RSS() {
         $widget_ops = array('classname' => 'rss', 'description' => 'Insert an RSS feed from another website');
-        $this->WP_Widget('rss', 'RSS v2.0', $widget_ops);
+        parent::__construct('rss', __('RSS v2.0'), $widget_ops);
     }
 
     function widget($args, $instance) {

@@ -293,9 +293,6 @@ include 'widgets/widget-email.php';
 // widget: Embed page content into a widgetized area
 include 'widgets/widget-embed-pages.php';
 
-// widget: Random Quotes
-include 'widgets/widget-random-quotes.php';
-
 // widget: RSS 2.0
 include 'widgets/widget-rss.php';
 

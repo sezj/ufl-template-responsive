@@ -5,8 +5,7 @@ class COM_widget_pages extends WP_Widget {
 	function COM_widget_pages() {
 
 		$widget_ops = array('classname' => 'widget_pages', 'description' => __( 'Your blog&#8217;s WordPress Pages') );
-
-		$this->WP_Widget('pages', __('Pages'), $widget_ops);
+		parent::__construct('pages', __('Pages'), $widget_ops);
 
 	}
 

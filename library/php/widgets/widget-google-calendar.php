@@ -4,7 +4,7 @@ class UFCOM_google extends WP_Widget {
 
 	function UFCOM_google() {
 		$widget_ops = array('classname' => 'widget_UFCOM_google', 'description' => 'Insert a Google Calendar' );
-		$this->WP_Widget('UFCOM_google', 'Google Calendar', $widget_ops);
+		parent::__construct('UFCOM_google', __('Google Calendar'), $widget_ops);
 	}
  
 	function widget($args, $instance) {

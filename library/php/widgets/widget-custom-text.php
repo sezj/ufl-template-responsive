@@ -3,7 +3,7 @@
 class Eng_custom_text extends WP_Widget {
 	function Eng_custom_text() {
 		$widget_ops = array('classname' => 'widget_eng_custom_text', 'description' => 'Insert text or HTML' );
-		$this->WP_Widget('Eng_custom_text', 'Custom Text', $widget_ops);
+		parent::__construct('Eng_custom_text', __('Custom Text'), $widget_ops);
 	}
  
 	function widget($args, $instance) {

@@ -4,7 +4,7 @@ class Eng_Widget_FeatureBox extends WP_Widget {
 
 	function Eng_Widget_FeatureBox() {
 		$widget_ops = array('classname' => 'featurebox', 'description' => 'Insert a feature box using HTML. Styled for the Home Page Features Footer widget area.');
-		$this->WP_Widget('featurebox', 'Feature Box', $widget_ops);
+		parent::__construct('featurebox', __('Feature Box'), $widget_ops);
 	}
 
 function widget($args, $instance) {
