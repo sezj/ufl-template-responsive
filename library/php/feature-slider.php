@@ -1,6 +1,5 @@
 <?php
 	
-	
 	$featured_category_id = of_get_option("opt_featured_category");
 	$featured_cat_obj = get_category($featured_category_id);
 	$featured_cat_number_of_posts = $featured_cat_obj->count;
@@ -8,6 +7,7 @@
 	$slider_number_of_posts = of_get_option("opt_number_of_posts_to_show");
 	$slider_speed = of_get_option("opt_featured_speed");
 	$slider_disable_link = of_get_option("opt_featured_disable_link");
+
 	
 	// Checks if user has chosen a selection (theme options) that exceeds number of available posts
 	// in the featured category -- if so, falls back valid number.
@@ -16,12 +16,12 @@
 		$slider_number_of_posts = $featured_cat_number_of_posts;
 	}
 	
-	// $slider_feature_posts = new WP_Query();
-	// $slider_feature_posts->query("showposts=". $slider_number_of_posts . "&cat=" . $featured_category_id . "");
-	
-	$slider_feature_posts = new WP_Query( array('posts_per_page' => $slider_number_of_posts, 'cat' => $featured_category_id ) );
-	
-	// $slider_feature_posts->query("posts_per_page=". $slider_number_of_posts . "&cat=" . $featured_category_id . "");
+//old 
+	$slider_feature_posts = new WP_Query( array(
+		'posts_per_page' => $slider_number_of_posts, 
+		'cat' => $featured_category_id 
+		) );
+
 	$slider_feature_counter = 1;
 ?>
 <script type="text/javascript">var sliderSpeed = <?php echo (empty($slider_speed) ? 7000 : esc_html($slider_speed)); ?></script> 
