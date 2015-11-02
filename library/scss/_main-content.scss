@@ -5,7 +5,7 @@ button, .button, .gform_button {
 	width: auto;
 	overflow: visible;
 	color: $white;
-	background: $orange;
+	background-color: $orange;
 	border: 1px solid $orange !important;
 	text-align: center;
 	padding: 10px 30px;
@@ -18,7 +18,7 @@ button, .button, .gform_button {
 	}
 	&:hover, &:active {
 		color:$white;
-		background: $med-orange;
+		background-color: $med-orange;
 		border: 1px solid $dark-orange !important;
 		cursor:pointer;
 		border:none;
