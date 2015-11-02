@@ -156,16 +156,33 @@ add_filter( 'login_headertitle', 'uf_login_logo_url_title' );
 
 function ufandshands_lightbox_rel ($content) {
 	global $post;
+//original lightbox filter
 	$pattern = "/<a(.*?)href=('|\")([^>]*).(bmp|gif|jpeg|jpg|png)('|\")(.*?)>(.*?)<\/a>/i";
-		$replacement = '<a$1href=$2$3.$4$5 rel="prettyPhoto['.$post->ID.']"$6>$7</a>';
-		$rel_content = preg_replace($pattern, $replacement, $content, -1, $count);
-		if ($count > 1) {
-			$content = $rel_content;
-		}
-		return $content;
+	$replacement = '<a$1href=$2$3.$4$5 rel="prettyPhoto['.$post->ID.']"$6>$7</a>';
+	$rel_content = preg_replace($pattern, $replacement, $content, -1, $count);
+	if ($count > 1) {
+		$content = $rel_content;
+	}
+	return $content;
+
+	// to use a different rel attribute in the event of having responsive lightbox
+	// global $detect_mobile;
+	
+	// $pattern = "/<a(.*?)href=('|\")([^>]*).(bmp|gif|jpeg|jpg|png)('|\")(.*?)>(.*?)<\/a>/i";
+	// 	if ($detect_mobile == false) {
+	// 		$replacement = '<a$1href=$2$3.$4$5 rel="prettyPhoto['.$post->ID.']"$6>$7</a>';
+	// 	} else {
+	// 		$replacement = '<a$1href=$2$3.$4$5 rel="test['.$post->ID.']"$6>$7</a>';
+	// 	}
+	// 	$rel_content = preg_replace($pattern, $replacement, $content, -1, $count);
+	// 	if ($count > 1) {
+	// 		$content = $rel_content;
+	// 	}
+	// 	return $content;
 }
-// add_filter('the_content', 'ufandshands_lightbox_rel', 12);
-// add_filter('get_comment_text', 'ufandshands_lightbox_rel');
+
+add_filter('the_content', 'ufandshands_lightbox_rel', 12);
+add_filter('get_comment_text', 'ufandshands_lightbox_rel');
 
 
 /* ----------------------------------------------------------------------------------- */
@@ -225,9 +242,9 @@ function ufandshands_header_adder() {
 	} elseif(!is_admin()) {
 		echo "<link rel='stylesheet' href='" . $bloginfo_url . "/library/css/navigation.css'>\n";
 	}
-	// if ($detect_mobile == false) {
-	// 	echo "<link rel='stylesheet' href='" . $bloginfo_url . "/library/css/prettyPhoto.css'>\n";
-	// }  
+	if ($detect_mobile == false) {
+		echo "<link rel='stylesheet' href='" . $bloginfo_url . "/library/css/prettyPhoto.css'>\n";
+	}  
 	//Custom CSS
 	if(!empty($custom_css)) {
 		echo '<style type="text/css">' . $custom_css . '</style>'."\n";
@@ -279,9 +296,9 @@ function ufandshands_footer_common_scripts() {
 		//wp_enqueue_script('autoclear', get_bloginfo('template_url') . '/library/js/autoclear.js', false, false, true);
 		wp_enqueue_script('hoverintent', get_bloginfo('template_url') . '/library/js/jquery.hoverIntent.minified.js', array('jquery'), false, true);
 		//wp_enqueue_script('institutional-nav', get_bloginfo('template_url') . '/library/js/institutional-nav.js', array('jquery', 'hoverintent'), false, true);
-		// if ($detect_mobile == false) {
-		// 	wp_enqueue_script('pretty-photo', get_bloginfo('template_url') . '/library/js/jquery.prettyPhoto.js', array('jquery'), false, true);
-		// }    
+		if ($detect_mobile == false) {
+			wp_enqueue_script('pretty-photo', get_bloginfo('template_url') . '/library/js/jquery.prettyPhoto.js', array('jquery'), false, true);
+		}    
 		wp_enqueue_script('common-script', get_bloginfo('template_url') . '/library/js/script.js', array('jquery'), false, true);
 		if (of_get_option('opt_responsive')) {
 				wp_enqueue_script('responsive-script', get_bloginfo('template_url') . '/library/js/responsive.js', array('jquery'), false, true);

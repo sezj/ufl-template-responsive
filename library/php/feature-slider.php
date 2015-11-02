@@ -16,7 +16,6 @@
 		$slider_number_of_posts = $featured_cat_number_of_posts;
 	}
 	
-//old 
 	$slider_feature_posts = new WP_Query( array(
 		'posts_per_page' => $slider_number_of_posts, 
 		'cat' => $featured_category_id 
