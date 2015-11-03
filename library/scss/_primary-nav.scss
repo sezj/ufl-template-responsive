@@ -129,10 +129,9 @@ PRIMARY NAVIGATION
 	color: $dark-blue;
 }
 #primary-nav .parent a {
-	// padding-right: 30px;
-	// background: transparent url(images/bg-dropdown-icon.png) 94% 12px no-repeat;
 	&:after {
-		content: " \25BE";
+		content: " \25E2";
+		font-size: 0.9em;
 		vertical-align: top;
 	}
 }
