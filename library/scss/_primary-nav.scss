@@ -3,7 +3,6 @@ PRIMARY NAVIGATION
 ----------------------------------------------------------------------*/
 
 #primary-nav {
-//	background: transparent url(images/bg-primary-nav.jpg) 0 0 repeat-x;
 	background-color:$dark-blue;
 	bottom: 0;
 	font-size: 1em;
@@ -12,7 +11,6 @@ PRIMARY NAVIGATION
 	padding-left: 0;
 	position: relative;
 	z-index:9988 !important;
-//	box-shadow: 0 1px 4px $black-50;
 	border-top: 4px solid $white;
 	border-bottom: 4px solid $white;
 }
@@ -24,13 +22,13 @@ PRIMARY NAVIGATION
 	height: 40px;
 	margin: -4px 0;
 	border-top: 4px solid $white;
-}
-#primary-nav li:hover {
-	border-top: 4px solid $orange;
-}
-#primary-nav li:active {
-	border-top: 4px solid $orange;
-	background-color:$very-dark-blue;
+	&:hover {
+		border-top: 4px solid $orange;
+	}
+	&:active {
+		border-top: 4px solid $orange;
+		background-color:$very-dark-blue;
+	}
 }
 #primary-nav a {
 	border-left: 1px solid $medium-blue;
@@ -40,10 +38,10 @@ PRIMARY NAVIGATION
 	background-repeat: no-repeat;
 	@include spaced-headline(serif);
 	height: 17px;
-	padding: 9px 12px;
+	padding: 9px 12px; 
 }
 #primary-nav #home a {
-  border-left: none;
+  	border-left: none;
 	border-left: 1px solid $medium-blue;
 }
 .home #home a,
@@ -68,7 +66,6 @@ PRIMARY NAVIGATION
 	text-align: left;
 	margin: 0;
 	padding: 0;
-//	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 #primary-nav .children li {
 	background-image: none;
@@ -112,10 +109,6 @@ PRIMARY NAVIGATION
 	padding: 0;
 	height: 40px;
 	width: 72px;
-	&:hover {
-	}
-	&:active {
-	}
 }
 .home #primary-nav #home {
 	background-position: -732px -22px;
@@ -129,11 +122,10 @@ PRIMARY NAVIGATION
 	color: $dark-blue;
 }
 #primary-nav .parent a {
-	// padding-right: 30px;
-	// background: transparent url(images/bg-dropdown-icon.png) 94% 12px no-repeat;
 	&:after {
-		content: " \25BE";
-		vertical-align: top;
+		content: " \25E2";
+		font-size: 0.8em;
+		// vertical-align: top;
 	}
 }
 
