@@ -156,7 +156,6 @@ add_filter( 'login_headertitle', 'uf_login_logo_url_title' );
 
 function ufandshands_lightbox_rel ($content) {
 	global $post;
-//original lightbox filter
 	$pattern = "/<a(.*?)href=('|\")([^>]*).(bmp|gif|jpeg|jpg|png)('|\")(.*?)>(.*?)<\/a>/i";
 	$replacement = '<a$1href=$2$3.$4$5 rel="prettyPhoto['.$post->ID.']"$6>$7</a>';
 	$rel_content = preg_replace($pattern, $replacement, $content, -1, $count);
@@ -164,21 +163,6 @@ function ufandshands_lightbox_rel ($content) {
 		$content = $rel_content;
 	}
 	return $content;
-
-	// to use a different rel attribute in the event of having responsive lightbox
-	// global $detect_mobile;
-	
-	// $pattern = "/<a(.*?)href=('|\")([^>]*).(bmp|gif|jpeg|jpg|png)('|\")(.*?)>(.*?)<\/a>/i";
-	// 	if ($detect_mobile == false) {
-	// 		$replacement = '<a$1href=$2$3.$4$5 rel="prettyPhoto['.$post->ID.']"$6>$7</a>';
-	// 	} else {
-	// 		$replacement = '<a$1href=$2$3.$4$5 rel="test['.$post->ID.']"$6>$7</a>';
-	// 	}
-	// 	$rel_content = preg_replace($pattern, $replacement, $content, -1, $count);
-	// 	if ($count > 1) {
-	// 		$content = $rel_content;
-	// 	}
-	// 	return $content;
 }
 
 add_filter('the_content', 'ufandshands_lightbox_rel', 12);
