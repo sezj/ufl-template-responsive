@@ -151,7 +151,12 @@ $opt_footer_widgets_visibility = of_get_option("opt_footer_widgets_visibility");
 		</div> <!-- /footer-bottom -->
 	</div><!-- end institutional footer container -->
 </footer>			
-
+<script>
+ jQuery( function()
+    {
+        jQuery( 'a' ).imageLightbox();
+    });
+</script>
 	
 <?php 
 //Custom JS
