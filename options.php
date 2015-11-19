@@ -152,7 +152,7 @@ function optionsframework_options() {
 	$options[] = array( "name" => "Site Specific Search",
 			"desc" => "Only search this site with UF Search (this option sets the site:example.ufl.edu search option)",
 			"id" => "opt_site_specific_search",
-			"std" => "0",
+			"std" => "1",
 			"type" => "checkbox");
 	 
 	$options[] = array( "name" => "Use WordPress Search",
@@ -164,7 +164,7 @@ function optionsframework_options() {
 	$options[] = array( "name" => "Search Box Text",
 			"desc" => "Change the default text of the search box.",
 			"id" => "opt_search_box_text",
-			"std" => "",
+			"std" => "Search this site",
 			"type" => "text");
 
 	$options[] = array( "name" => "Site Title",
@@ -271,7 +271,7 @@ function optionsframework_options() {
 	$options[] = array( "name" => "Homepage Layout for Widgets",
 			"desc" => "Select which layout you want to use for your widgets on the homepage",
 			"id" => "opt_homepage_layout",
-			"std" => "3c-default",
+			"std" => "2c-bias",
 			"type" => "images",
 			"options" => array(
 				'3c-default' => $imagepath . '3c-default.png',
