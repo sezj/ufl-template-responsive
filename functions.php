@@ -166,9 +166,6 @@ function ufandshands_lightbox_rel ($content) {
 }
 
 
-//this is a test change to test
-
-
 add_filter('the_content', 'ufandshands_lightbox_rel', 12);
 add_filter('get_comment_text', 'ufandshands_lightbox_rel');
 
