@@ -139,6 +139,18 @@ function uf_login_logo_url_title() {
 }
 add_filter( 'login_headertitle', 'uf_login_logo_url_title' );
 
+/* ----------------------------------------------------------------------------------- */
+/* Allow additional file types to be uploaded to the Media Library
+/* ----------------------------------------------------------------------------------- */
+add_filter('upload_mimes', 'custom_upload_mimes');
+function custom_upload_mimes ( $existing_mimes=array() ) {
+
+$existing_mimes['eps'] = 'application/postscript';
+$existing_mimes['ai'] = 'application/postscript';
+
+return $existing_mimes;
+}
+
 
 /* ----------------------------------------------------------------------------------- */
 /* Force protocol relative URIs for Media Library links
@@ -381,12 +393,6 @@ function login_error_message($error){
 	return $error;
 }
 
-// Videos in Sidebar Widgets
-global $wp_embed;
-add_filter( 'widget_text', array( $wp_embed, 'run_shortcode' ), 8 );
-add_filter( 'widget_text', array( $wp_embed, 'autoembed'), 8 );
-
-
 /* ----------------------------------------------------------------------------------- */
 /* 	WIDGET INCLUDES -- All functions related to Widgets should be here
 /* ----------------------------------------------------------------------------------- */
@@ -397,6 +403,10 @@ add_filter( 'widget_text', array( $wp_embed, 'autoembed'), 8 );
 if (function_exists('em_init')) {
 	include ('library/php/widgets/widget-em-events.php');	
 }
+// Videos in Sidebar Widgets
+global $wp_embed;
+add_filter( 'widget_text', array( $wp_embed, 'run_shortcode' ), 8 );
+add_filter( 'widget_text', array( $wp_embed, 'autoembed'), 8 );
 
 /* ----------------------------------------------------------------------------------- */
 /* 	Change the 'from name' in emails to match blog name
