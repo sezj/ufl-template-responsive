@@ -52,8 +52,8 @@
 	<?php } //endif for whether or not this is the 'choose a category' cat ?>
 	
 	<?php include('user-role-menu.php'); ?>
-  
-	<?php ufandshands_secondary_widget_area(); ?>
+
+	<?php include('secondary-widget-area.php'); ?>
 	
 	<?php include('featurebox-widget-area.php'); ?>
 	
