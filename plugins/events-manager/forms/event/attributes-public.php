@@ -10,7 +10,7 @@ $has_deprecated = false;
 ?>
 <?php if( count( $attributes['names'] ) > 0 ) : ?>
 	<?php foreach( $attributes['names'] as $name) : ?>
-	<div class="event-attributes alignleft">
+	<div class="event-attributes alignright">
 		<label for="em_attributes[<?php echo $name ?>]"><?php echo $name ?>: </label>
 		<?php if( count($attributes['values'][$name]) > 1 ): ?>
 		<select name="em_attributes[<?php echo $name ?>]">

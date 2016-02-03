@@ -8,7 +8,7 @@ global $EM_Event;
 $categories = EM_Categories::get(array('orderby'=>'name','hide_empty'=>0));
 ?>
 <?php if( count($categories) > 0 ): ?>
-<div class="event-categories alignright">
+<div class="event-categories alignleft">
 	<!-- START Categories -->
 	<label for="event_categories[]"><?php _e ( 'Category:', 'events-manager'); ?></label>
 	<select name="event_categories[]" multiple size="3">
