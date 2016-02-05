@@ -58,31 +58,42 @@ $required = apply_filters('em_required_html','<i>*</i>');
 				}
 			?>
 			<label><?php _e ( 'Location Name:', 'dbem' )?><?php echo $required; ?></label>
-					<input id='location-id' name='location_id' type='hidden' value='<?php echo $EM_Location->location_id; ?>' size='15' />
-					<input id="location-name" type="text" name="location_name" value="<?php echo esc_attr($EM_Location->location_name, ENT_QUOTES); ?>" />													
-					<p>
-					<em id="em-location-search-tip"><?php _e( 'Create a location or start typing to search a previously created location.', 'dbem' )?></em>
-					<em id="em-location-reset" style="display:none;"><?php _e('You cannot edit saved locations here.', 'dbem'); ?> <a href="#"><?php _e('Reset this form to create a location or search again.', 'dbem')?></a></em>
-					</p>
-			<label><?php _e ( 'Address:', 'dbem' )?><?php echo $required; ?></label>
-					<input id="location-address" type="text" name="location_address" value="<?php echo esc_attr($EM_Location->location_address, ENT_QUOTES); ; ?>" />
-			<label><?php _e ( 'City/Town:', 'dbem' )?><?php echo $required; ?></label>
-					<input id="location-town" type="text" name="location_town" value="<?php echo esc_attr($EM_Location->location_town, ENT_QUOTES); ?>" />
-			<label><?php _e ( 'State/County:', 'dbem' )?></label>
-					<input id="location-state" type="text" name="location_state" value="<?php echo esc_attr($EM_Location->location_state, ENT_QUOTES); ?>" />
-			<label><?php _e ( 'Postcode:', 'dbem' )?></label>
-					<input id="location-postcode" type="text" name="location_postcode" value="<?php echo esc_attr($EM_Location->location_postcode, ENT_QUOTES); ?>" />
-			<label><?php _e ( 'Region:', 'dbem' )?>	</label>
-					<input id="location-region" type="text" name="location_region" value="<?php echo esc_attr($EM_Location->location_region, ENT_QUOTES); ?>" />
-			<label><?php _e ( 'Country:', 'dbem' )?><?php echo $required; ?></label>
-					<select id="location-country" name="location_country">
-						<option value="0" <?php echo ( $EM_Location->location_country == '' && $EM_Location->location_id == '' && get_option('dbem_location_default_country') == '' ) ? 'selected="selected"':''; ?>><?php _e('none selected','dbem'); ?></option>
-						<?php foreach(em_get_countries() as $country_key => $country_name): ?>
-						<option value="<?php echo $country_key; ?>" <?php echo ( $EM_Location->location_country == $country_key || ($EM_Location->location_country == '' && $EM_Location->location_id == '' && get_option('dbem_location_default_country')==$country_key) ) ? 'selected="selected"':''; ?>><?php echo $country_name; ?></option>
-						<?php endforeach; ?>
-					</select>
+			<input id='location-id' name='location_id' type='hidden' value='<?php echo $EM_Location->location_id; ?>' size='15' />
+			<input id="location-name" type="text" name="location_name" value="<?php echo esc_attr($EM_Location->location_name, ENT_QUOTES); ?>" />													
+			<p>
+				<em id="em-location-search-tip"><?php _e( 'Create a location or start typing to search a previously created location.', 'dbem' )?></em>
+				<em id="em-location-reset" style="display:none;"><?php _e('You cannot edit saved locations here.', 'dbem'); ?> <a href="#"><?php _e('Reset this form to create a location or search again.', 'dbem')?></a></em>
+			</p>
+			<div class="alignleft">
+				<label><?php _e ( 'Address:', 'dbem' )?><?php echo $required; ?></label>
+				<input id="location-address" type="text" name="location_address" value="<?php echo esc_attr($EM_Location->location_address, ENT_QUOTES); ; ?>" />
+			</div>
+			<div class="alignright">
+				<label><?php _e ( 'City/Town:', 'dbem' )?><?php echo $required; ?></label>
+				<input id="location-town" type="text" name="location_town" value="<?php echo esc_attr($EM_Location->location_town, ENT_QUOTES); ?>" />
+			</div>
+			<div class="alignleft clear">
+				<label><?php _e ( 'State/County:', 'dbem' )?></label>
+				<input id="location-state" type="text" name="location_state" value="<?php echo esc_attr($EM_Location->location_state, ENT_QUOTES); ?>" />
+			</div>
+			<div class="alignright">
+				<label><?php _e ( 'Postcode:', 'dbem' )?></label>
+				<input id="location-postcode" type="text" name="location_postcode" value="<?php echo esc_attr($EM_Location->location_postcode, ENT_QUOTES); ?>" />
+			</div>
+			<div class="alignleft clear">
+				<label><?php _e ( 'Region:', 'dbem' )?>	</label>
+				<input id="location-region" type="text" name="location_region" value="<?php echo esc_attr($EM_Location->location_region, ENT_QUOTES); ?>" />
+			</div>
+			<div class="alignright">
+				<label><?php _e ( 'Country:', 'dbem' )?><?php echo $required; ?></label>
+				<select id="location-country" name="location_country">
+					<option value="0" <?php echo ( $EM_Location->location_country == '' && $EM_Location->location_id == '' && get_option('dbem_location_default_country') == '' ) ? 'selected="selected"':''; ?>><?php _e('none selected','dbem'); ?></option>
+					<?php foreach(em_get_countries() as $country_key => $country_name): ?>
+					<option value="<?php echo $country_key; ?>" <?php echo ( $EM_Location->location_country == $country_key || ($EM_Location->location_country == '' && $EM_Location->location_id == '' && get_option('dbem_location_default_country')==$country_key) ) ? 'selected="selected"':''; ?>><?php echo $country_name; ?></option>
+					<?php endforeach; ?>
+				</select>
+			</div>
 		</div>
+		<br class="clear" />
 	<?php endif; ?>
-	<?php if ( get_option( 'dbem_gmap_is_active' ) ) em_locate_template('forms/map-container.php',true); ?>
-	<br style="clear:both;" />
 </div>

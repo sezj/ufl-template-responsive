@@ -78,9 +78,9 @@ if( !empty($_REQUEST['success']) ){
 					<p><em><?php esc_html_e( 'Details about the event.', 'dbem' )?> <?php esc_html_e( 'HTML allowed.', 'dbem' )?></em></p>
 				<?php endif; ?>
 			</div>
-			<div class="event-extra-details">
-				<?php if(get_option('dbem_attributes_enabled')) { em_locate_template('forms/event/attributes-public.php',true); }  ?>
+			<div class="event-extra-details clearfix">
 				<?php if(get_option('dbem_categories_enabled')) { em_locate_template('forms/event/categories-public.php',true); }  ?>
+				<?php if(get_option('dbem_attributes_enabled')) { em_locate_template('forms/event/attributes-public.php',true); }  ?>
 			</div>
 		</div>
 		

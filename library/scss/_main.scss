@@ -1014,13 +1014,16 @@ pre {background:$very-light-blue; padding:15px 30px;}
 	}
 	label {
 		display:block;
-		margin: 0.5em 0 0.25em 0;
+		margin: 1em 0 0.75em 0;
 	}
 	textarea {
 		width:90%;
 	}
 	h4 {
 		font-weight:normal;
+	}
+	.alignleft, .alignright {
+		width:47%;
 	}
 }
 .event-form-image input {
@@ -1036,9 +1039,6 @@ pre {background:$very-light-blue; padding:15px 30px;}
 	}
 }
 .em-location-fields {
-	width:50%;
-	float:left;
-	
 	input {
 		width:90%;
 	}
