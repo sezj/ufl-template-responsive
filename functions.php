@@ -462,18 +462,29 @@ add_filter("gform_tabindex", create_function("", "return 15;"));
 /* ----------------------------------------------------------------------------------- */
 	
 function em_event_output_condition_filter($replacement, $condition, $match, $EM_Event){
-    // Checks for has_Hosted by conditional
-    if(is_object($EM_Event) && preg_match('/^has_(Host)$/', $condition, $matches)){
-        if(array_key_exists($matches[1], $EM_Event->event_attributes) && !empty($EM_Event->event_attributes[$matches[1]]) ){
-            $replacement = preg_replace("/\{\/?$condition\}/", '', $match);
-        }else{
-            $replacement = '';
-        }
-    }
-    
-    return $replacement;
+	// Checks for has_Host conditional
+	if(is_object($EM_Event) && preg_match('/^has_(Host)$/', $condition, $matches)){
+		if(array_key_exists($matches[1], $EM_Event->event_attributes) && !empty($EM_Event->event_attributes[$matches[1]]) ){
+			$replacement = preg_replace("/\{\/?$condition\}/", '', $match);
+		} else{
+			$replacement = '';
+		}
+	}
+	
+	return $replacement;
 }
 add_filter('em_event_output_condition', 'em_event_output_condition_filter', 1, 4);
+
+function em_validate($result, $EM_Event) {
+	if (in_array($args['Host'],$EM_Event->event_attributes)) {
+		if ($_REQUEST['em_attributes[Host]'] =='') {
+			$EM_Event->add_error('Host is required.');
+			$result = false;
+		}
+	}
+	return $result;
+}
+add_filter('em_event_validate','em_validate', 1, 2);
 
 /* ----------------------------------------------------------------------------------- */
 /* 	Search Text
