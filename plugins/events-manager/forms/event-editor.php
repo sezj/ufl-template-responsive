@@ -30,11 +30,11 @@ if( !empty($_REQUEST['success']) ){
 			<h3 class="event-form-submitter"><?php esc_html_e( 'Your Details', 'dbem' ); ?></h3>
 			<div class="inside event-form-submitter">
 				<p>
-					<label><?php esc_html_e('Name', 'dbem'); ?><?php echo $required; ?></label>
+					<label><?php esc_html_e('Name', 'dbem'); ?></label>
 					<input type="text" name="event_owner_name" id="event-owner-name" value="<?php echo esc_attr($EM_Event->event_owner_name); ?>" />
 				</p>
 				<p>
-					<label><?php esc_html_e('Email', 'dbem'); ?><?php echo $required; ?></label>
+					<label><?php esc_html_e('Email', 'dbem'); ?></label>
 					<input type="text" name="event_owner_email" id="event-owner-email" value="<?php echo esc_attr($EM_Event->event_owner_email); ?>" />
 				</p>
 				<?php do_action('em_font_event_form_guest'); ?>
@@ -78,9 +78,9 @@ if( !empty($_REQUEST['success']) ){
 					<p><em><?php esc_html_e( 'Details about the event.', 'dbem' )?> <?php esc_html_e( 'HTML allowed.', 'dbem' )?></em></p>
 				<?php endif; ?>
 			</div>
-			<div class="event-extra-details clearfix">
-				<?php if(get_option('dbem_categories_enabled')) { em_locate_template('forms/event/categories-public.php',true); }  ?>
+			<div class="event-extra-details">
 				<?php if(get_option('dbem_attributes_enabled')) { em_locate_template('forms/event/attributes-public.php',true); }  ?>
+				<?php if(get_option('dbem_categories_enabled')) { em_locate_template('forms/event/categories-public.php',true); }  ?>
 			</div>
 		</div>
 		

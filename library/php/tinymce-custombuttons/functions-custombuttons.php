@@ -32,13 +32,13 @@ if( !function_exists('ufandshands_base_extended_editor_mce_buttons_2') ){
 	function ufandshands_base_extended_editor_mce_buttons_2($buttons) {
 		// The settings are returned in this array. Customize to suite your needs. An empty array is used here because I remove the second row of icons.
 		return array(
-			'formatselect', 'separator', 
+      'formatselect', 'separator', 
 			'pastetext', 'pasteword', 'removeformat', 'separator', 
 			'charmap', 'separator', 
 			'outdent', 'indent', 'separator', 
 			'undo', 'redo', 'wp_help'
-		);
-		
+    );
+    
 		/* WordPress Default
 		return array(
 			'formatselect', 'underline', 'justifyfull', 'forecolor', 'separator', 
@@ -69,82 +69,87 @@ add_filter('tiny_mce_before_init','coe_custom_mce_format');
 // 	add_filter('tiny_mce_before_init', 'ufandshands_base_custom_mce_format' );
 // }
 
-function add_custom_buttons() {
-	 if ( ! current_user_can('edit_posts') && ! current_user_can('edit_pages') )
-		 return;
-	 if ( get_user_option('rich_editing') == 'true') {
-		 
-		 add_filter('mce_external_plugins', 'add_youtube_tinymce_plugin');
-		 add_filter('mce_buttons_3', 'register_custom_buttons');
 
-	 }
+
+
+function add_custom_buttons() {
+   if ( ! current_user_can('edit_posts') && ! current_user_can('edit_pages') )
+     return;
+   if ( get_user_option('rich_editing') == 'true') {
+     
+     add_filter('mce_external_plugins', 'add_youtube_tinymce_plugin');
+     add_filter('mce_buttons_3', 'register_custom_buttons');
+
+   }
 }
 add_action('init', 'add_custom_buttons');
 
 function register_custom_buttons($buttons) {
-	 $customButtons =  loadCustomButtons();
-	 for ($i = 0; $i < sizeof($customButtons); $i++) {
-			 array_push($buttons, $customButtons[$i]->buttonSeparator, $customButtons[$i]->shortCodeTag);
-	 }
-	 
-	 return $buttons;
+   $customButtons =  loadCustomButtons();
+   for ($i = 0; $i < sizeof($customButtons); $i++) {
+       array_push($buttons, $customButtons[$i]->buttonSeparator, $customButtons[$i]->shortCodeTag);
+   }
+   
+   return $buttons;
 }
 
 function add_youtube_tinymce_plugin($plugin_array) {
 
-	 $plugin_array['shortcodebuttons'] = get_bloginfo('template_url').'/library/php/tinymce-custombuttons/tinymce-custombuttons.js.php';
+   $plugin_array['shortcodebuttons'] = get_bloginfo('template_url').'/library/php/tinymce-custombuttons/tinymce-custombuttons.js.php';
  
-	 return $plugin_array;
+   return $plugin_array;
 }
 
 function my_refresh_mce($ver) {
-	$ver += 3;
-	return $ver;
+  $ver += 3;
+  return $ver;
 }
 
 add_filter( 'tiny_mce_version', 'my_refresh_mce');
 
 // Add Style Select Menu to TinyMCE's 2nd Row
 function ufandshands_mce_buttons_2( $buttons ) {
-		array_splice( $buttons, 1, 0, 'styleselect' );
-		return $buttons;
+    array_splice( $buttons, 1, 0, 'styleselect' );
+    return $buttons;
 }
 add_filter( 'mce_buttons_2', 'ufandshands_mce_buttons_2' );
 
 //Customize the classes options inside the Style Select Menu
 function ufandshands_mce_before_init( $settings ) {
 
-		$style_formats = array(
-			array(
-				'title' => 'Lead-in',
-				'block' => 'p',
-				'classes' => 'lead'
-			),
-			array(
-				'title' => 'Arrow list bullet',
-				'block' => 'ul',
-				'classes' => 'arrow'
-			),
-			array(
-				'title' => 'Alert',
-				'inline' => 'span',
-				'classes' => 'alert'
-			),
-			array(
-			 'title' => 'Orange',
-			 'inline' => 'span',
-			 'classes' => 'orange'
-			),
-			array(
-				'title' => 'Dark Blue',
-				'inline' => 'span',
-				'classes' => 'dark-blue'
-			)
-		);
+    $style_formats = array(
+        array(
+        	'title' => 'Lead-in',
+        	'block' => 'p',
+        	'classes' => 'lead'
+        ),
+        array(
+          'title' => 'Arrow bullet list',
+          'block' => 'ul',
+          'classes' => 'arrow'
+        ),
+        array(
+          'title' => 'Alert',
+          'inline' => 'span',
+          'classes' => 'alert'
+        ),
+       
+		array(
+         'title' => 'Orange',
+         'inline' => 'span',
+         'classes' => 'orange'
+       ),
 
-		$settings['style_formats'] = json_encode( $style_formats );
+       array(
+         'title' => 'Dark Blue',
+         'inline' => 'span',
+         'classes' => 'dark-blue'
+       )
+    );
 
-		return $settings;
+    $settings['style_formats'] = json_encode( $style_formats );
+
+    return $settings;
 
 }
 add_filter( 'tiny_mce_before_init', 'ufandshands_mce_before_init' );
