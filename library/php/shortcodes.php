@@ -68,41 +68,6 @@ function ufandshands_widget_shortcode($atts) {
 }
 add_shortcode('widget','ufandshands_widget_shortcode'); 
 
-
-// flowplayer&video shortcode -- not using the extra attribute yet, leaving as template
-// function ufandshands_flow_func($atts, $content = null) {
-// 	extract(shortcode_atts(array(
-// 		'foo' => 'something',
-// 		'bar' => 'something else',
-// 	), $atts));
-
-// 	// iPad plugin wont play nice with multiple players on screen, so use a splash image to trigger default flowplayer ipad/iphone behavior
-// 	$user_agent = $_SERVER['HTTP_USER_AGENT'];
-// 	if (preg_match('/ipod/i',$user_agent)>0 || preg_match('/iphone/i',$user_agent)>0 || preg_match('/ipad/i',$user_agent)>0 || preg_match('/android/i',$user_agent)>0 || preg_match('/opera mini/i',$user_agent)>0 ) {
-// 		$user_agent = "<img src=\"http://med.ufl.edu/video/ufcomsplash.jpg\"";
-// 	} else { $user_agent = ""; }
-
-// 	// build flowjava return
-// 	$flowjava = "<script type=\"text/javascript\" src=\"/flowplayer/flowplayer-3.2.6.min.js\"></script><script type=\"text/javascript\" src=\"/flowplayer/flowplayer.ipad-3.2.2.min.js\"></script>";
-// 	$flowjava .="	<a  	class=\"player\"
-// 				href=\"".$content."\"
-// 				style=\"display:block;width:100%;height:470px;\"  
-// 				>".$user_agent."
-// 			</a>";
-// 	$flowjava .="	<script>
-// 				flowplayer(\"a.player\", {src: \"/flowplayer/flowplayer-3.2.7.swf\", wmode: 'opaque' }, {
-// 					clip:  {
-//                 				autoPlay: false,
-//                					autoBuffering: true,
-// 						scaling: 'orig'
-//                 			}
-//                 		}).ipad(\"a.player\");
-// 			</script>";
-// 	return $flowjava;
-// }
-// add_shortcode('video', 'ufandshands_flow_func');
-// add_shortcode('flv', 'ufandshands_flow_func');
-
 // split content into two columns
 
 function ufandshands_shortcode_float_left($atts, $content = null) {
@@ -146,6 +111,18 @@ function ufandshands_shortcode_float_right($atts, $content = null) {
 	return $right_float;
 }
 add_shortcode('right', 'ufandshands_shortcode_float_right');
+
+function ufandshands_shortcode_clear_floats($atts, $content = null) {
+	extract(shortcode_atts(array(
+                'autop' => '1',
+	), $atts));
+	$content = do_shortcode($content);
+        
+	$float_clear .= "<div class='clear'>&nbsp;</div>";
+	
+	return $float_clear;
+}
+add_shortcode('clear', 'ufandshands_shortcode_clear_floats');
 
 // show content only on mobile
 function ufandshands_shortcode_mobile_only($atts, $content = null) {
@@ -336,25 +313,6 @@ function ufandshands_readRss($atts) {
 	return $rss_widget_output;
 }
 add_shortcode('rss', 'ufandshands_readRss');
-
-
-// embed swf shortcode
-
-function ufandshands_shortcode_swf($atts, $content = null) {
-    extract(shortcode_atts(array(
-	"width" => '100%',
-	"height" => '400',
-    ), $atts));
-
-	$embed_code = "<object type=\"application/x-shockwave-flash\" codebase=\"http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0\" data=\"".$content."\" width=\"".$width."\" height=\"".$height."\" style=\"background-color:red;\">
-<param name=\"movie\" value=\"".$content."\" />
-<param name=\"quality\" value=\"high\"/>
-</object>";
-
-	return $embed_code;
-}
-
-add_shortcode('swf', 'ufandshands_shortcode_swf');
 
 
 // insert HTML sitemap (http://wordpress.org/extend/plugins/html-sitemap/)
@@ -577,88 +535,6 @@ function wp_mcTagMap_renderDivider($count, $rowNum) {
 }
 
 // ** end functions for rendering multi-column tag clouds **
-
-
-// Blogroll links shortcode for listing links by category (letter)
-// function ufl_links( $atts ) {
-// 	extract( shortcode_atts( array(
-// 		'cat' => 'all',
-// 	), $atts ) );
-// 	$link_list = '<ul class="link_list">';
-// 	if ( $cat == 'all' ) {
-// 		$link_list .= wp_list_bookmarks("categorize=1&title_li=&echo=0");
-// 	} else {
-// 		$link_list .= wp_list_bookmarks("categorize=0&title_li=&category={$cat}&echo=0");
-// 	}
-// 	$link_list .= '</ul>';
-// 	return $link_list;
-// }
-// add_shortcode( 'ufl_links', 'ufl_links' );
-
-
-// Generate link for referrer to Lift
-// function ufl_referrer_lift_link($atts, $content = null) {
-// 	extract(shortcode_atts(array(
-// 		'foo' => 'something',
-// 		'bar' => 'something else',
-// 	), $atts));
-	
-// 	$page_name = $_SERVER['HTTP_REFERER'];
-	
-// 	// get title of referring page
-// 	$doc = new DOMDocument();
-// 	$loaded = @ $doc->loadHTMLFile($page_name);
-// 	$text = $doc->saveHTML();
-	
-// 	if ($loaded) {
-// 		if (preg_match('/<title>(.*?)<\/title>/is',$text,$found)) {
-// 			$title = $found[1];
-// 		} else {
-// 			$title = 'University of Florida';
-// 		}
-// 		$lift_link = '<a title="Your previous page via Lift Transcoder" href="http://assistive.usablenet.com/tt/'.$page_name.'">Browse "'.$title.'" with Lift</a>.';
-// 	} else {
-// 		$lift_link = 'There was an error determining the referring page. <a href="http://assistive.usablenet.com/tt/http://www.ufl.edu/">Please browse the UF web presence with Lift</a>.';
-// 	}
-	
-	
-
-// 	return wpautop($lift_link);
-// }
-// add_shortcode('ufl-lift-link', 'ufl_referrer_lift_link');
-
-// Get the latest news item from the weather feed at news.ufl.edu
-// Can be used to pull any feed.
-// function ufl_news_rss_include($atts, $content = null) {
-// 	extract(shortcode_atts(array(
-// 		'feed' => 'http://news.ufl.edu/tags/weather/feed/',
-// 		'items' => '1',
-// 		'showfeedtitle' => false,
-// 		'showdate' => false,
-// 		'dateformat' => 'l, F jS, Y'
-// 	), $atts));
-	
-// 	$rss = @ simplexml_load_file($feed);
-// 	$feed_title = ($rss->channel->link == 'http://news.ufl.edu' ? '[UF News]' : '');
-	
-// 	if ($rss) {
-// 		$output = '<ul>';
-// 		foreach ($rss->channel->item as $feedItem) {
-// 			$i++;
-// 			$output .= '<li><a href="'.$feedItem->link.'">'.$feedItem->title.'</a>';
-// 			if ($showfeedtitle == true) { $output .= ' '.$feed_title; }
-// 			if ($showdate) { $output .= ' '.date( $dateformat, strtotime($feedItem->pubDate) ); }
-// 			$output .= '</li>';
-// 			if($i >= $items) break;
-// 		}
-// 		$output .= '</ul>';
-// 		return $output;
-// 	} else {
-// 		return 'RSS updates from the <a href="'.$feed.'">specified feed</a> could not be loaded at this time.';
-// 	}
-	
-// }
-// add_shortcode('ufl-news-rss', 'ufl_news_rss_include');
 
 // Display posts via shortcode
 // From: http://www.billerickson.net/shortcode-to-display-posts/
