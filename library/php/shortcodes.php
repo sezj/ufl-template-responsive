@@ -7,6 +7,7 @@ include_once('shortcode-subpage-peek.php');
 include_once('shortcode-attachment-list.php');
 include_once('shortcode-tabbed-nav-menu.php');
 
+
 /* ----------------------------------------------------------------------------------- */
 /* Insert a widget via a shortcode
 /*
@@ -17,11 +18,11 @@ include_once('shortcode-tabbed-nav-menu.php');
 // buggy with listing posts in a certain category - use display-posts shortcode instead.
 
 function ufandshands_widget_shortcode($atts) {
-    
-    global $wp_widget_factory;
-    
-    extract(shortcode_atts(array(
-        'widget_name' => FALSE, // specific class name of shortcode
+	
+	global $wp_widget_factory;
+	
+	extract(shortcode_atts(array(
+		'widget_name' => FALSE, // specific class name of shortcode
 		'title' => '', // universal to all widgets
 		'numberofposts' => '3', // recent posts
 		'showexcerpt' => 1, // recent posts
@@ -29,21 +30,21 @@ function ufandshands_widget_shortcode($atts) {
 		'showdate' => 1, // recent posts
 		'showrssicon' => 1, // recent posts
 		'specific_category_id' => ''
-    ), $atts));
-    
-    $widget_name = wp_specialchars($widget_name);
-    
-    if (!is_a($wp_widget_factory->widgets[$widget_name], 'WP_Widget')):
+	), $atts));
 	
-        $wp_class = 'WP_Widget_'.ucwords(strtolower($class));
-        
-        if (!is_a($wp_widget_factory->widgets[$wp_class], 'WP_Widget')):
-            return '<p>'.sprintf(__("%s: Widget class not found. Make sure this widget exists and the class name is correct"),'<strong>'.$class.'</strong>').'</p>';
-        else:
-            $class = $wp_class;
-        endif;
-    endif;
-    
+	$widget_name = wp_specialchars($widget_name);
+	
+	if (!is_a($wp_widget_factory->widgets[$widget_name], 'WP_Widget')):
+	
+		$wp_class = 'WP_Widget_'.ucwords(strtolower($class));
+		
+		if (!is_a($wp_widget_factory->widgets[$wp_class], 'WP_Widget')):
+			return '<p>'.sprintf(__("%s: Widget class not found. Make sure this widget exists and the class name is correct"),'<strong>'.$class.'</strong>').'</p>';
+		else:
+			$class = $wp_class;
+		endif;
+	endif;
+	
 	$instance = '&title='.$title;
 	$instance .= '&numberofposts='.$numberofposts;
 	$instance .= '&showexcerpt='.$showexcerpt;
@@ -53,7 +54,7 @@ function ufandshands_widget_shortcode($atts) {
 	$instance .= '&specific_category_id='.$specific_category_id;
 		// $instance .= '&='.$;	
 	
-    ob_start();
+	ob_start();
 	the_widget($widget_name, $instance, array('widget_id'=>'arbitrary-instance-'.$id,
 		'before_widget' => '<div class="widget_body">',
 		'after_widget' => '</div>',
@@ -61,10 +62,10 @@ function ufandshands_widget_shortcode($atts) {
 		'after_title' => '</h3>',
 				
 	));
-    $output = ob_get_contents();
-    ob_end_clean();
-    return $output;
-    
+	$output = ob_get_contents();
+	ob_end_clean();
+	return $output;
+	
 }
 add_shortcode('widget','ufandshands_widget_shortcode'); 
 
@@ -72,7 +73,7 @@ add_shortcode('widget','ufandshands_widget_shortcode');
 
 function ufandshands_shortcode_float_left($atts, $content = null) {
 	extract(shortcode_atts(array(
-                'autop' => '1',
+				'autop' => '1',
 		'foo' => 'something',
 		'bar' => 'something else',
 	), $atts));
@@ -80,11 +81,11 @@ function ufandshands_shortcode_float_left($atts, $content = null) {
 	$content = do_shortcode($content);
 
 	$left_float = "<div class='shortcode_alignleft'>";
-        if ($replacelinebreaks=='1')
-            $left_float .= wpautop($content);
-        else
-            $left_float .= $content;
-        
+		if ($replacelinebreaks=='1')
+			$left_float .= wpautop($content);
+		else
+			$left_float .= $content;
+		
 	$left_float .= "</div>";
 
 	return $left_float;
@@ -93,18 +94,18 @@ add_shortcode('left', 'ufandshands_shortcode_float_left');
 
 function ufandshands_shortcode_float_right($atts, $content = null) {
 	extract(shortcode_atts(array(
-                'autop' => '1',
+				'autop' => '1',
 		'foo' => 'something',
 		'bar' => 'something else',
 	), $atts));
 	$content = do_shortcode($content);
 
 	$right_float = "<div class='shortcode_alignright'>";
-        if ($replacelinebreaks=='1')
-            $right_float .= wpautop($content);
-        else
-            $right_float .= $content;
-            
+		if ($replacelinebreaks=='1')
+			$right_float .= wpautop($content);
+		else
+			$right_float .= $content;
+			
 	$right_float .= "</div>";
 	$right_float .= "<div class='clear'>&nbsp;</div>";
 
@@ -114,10 +115,10 @@ add_shortcode('right', 'ufandshands_shortcode_float_right');
 
 function ufandshands_shortcode_clear_floats($atts, $content = null) {
 	extract(shortcode_atts(array(
-                'autop' => '1',
+				'autop' => '1',
 	), $atts));
 	$content = do_shortcode($content);
-        
+		
 	$float_clear .= "<div class='clear'>&nbsp;</div>";
 	
 	return $float_clear;
@@ -127,7 +128,7 @@ add_shortcode('clear', 'ufandshands_shortcode_clear_floats');
 // show content only on mobile
 function ufandshands_shortcode_mobile_only($atts, $content = null) {
 	extract(shortcode_atts(array(
-                'autop' => '1',
+				'autop' => '1',
 		'fullonly' => '',
 		'bar' => 'something else',
 	), $atts));
@@ -135,14 +136,14 @@ function ufandshands_shortcode_mobile_only($atts, $content = null) {
 
 	if($fullonly == 'yes'){
 		$mobile_only = "<div class='shortcode_fullonly'>";
-    }else{ 
+	}else{ 
 		$mobile_only = "<div class='shortcode_mobileonly'>";
 	}
 	if ($replacelinebreaks=='1')
-            $mobile_only .= wpautop($content);
-        else
-            $mobile_only .= $content;
-            
+			$mobile_only .= wpautop($content);
+		else
+			$mobile_only .= $content;
+			
 	$mobile_only .= "</div>";
 	$mobile_only .= "<div class='clear'>&nbsp;</div>";
 
@@ -155,22 +156,22 @@ add_shortcode('mobile', 'ufandshands_shortcode_mobile_only');
 // example usage: [googlemap zoom="13" center="52.66389056542801, 0.1641082763671875" marker="52.66389056542801, 0.1641082763671875" width="488px"]
 
 function ufandshands_googlemap_shortcode( $atts ) {
-    extract(shortcode_atts(array(
-        'width' => '100%',
-        'height' => '400px',
-        'apikey' => 'ABQIAAAAsogIjHA_njjPITMFqPzMOBQThvvydD0IksfzMJ0uPnMKim3ZexTm8dJK8_y3Xc3ljRG_OOqTn-hOJQ',
+	extract(shortcode_atts(array(
+		'width' => '100%',
+		'height' => '400px',
+		'apikey' => 'ABQIAAAAsogIjHA_njjPITMFqPzMOBQThvvydD0IksfzMJ0uPnMKim3ZexTm8dJK8_y3Xc3ljRG_OOqTn-hOJQ',
 	'address' => '',
-        'zoom' => '13'
-    ), $atts));
+		'zoom' => '13'
+	), $atts));
  
-    $rand = rand(1,100) * rand(1,100);
+	$rand = rand(1,100) * rand(1,100);
  
-    return '
-    	<script src="http://maps.google.com/maps?file=api&v=2&sensor=false&key='.$apikey.'" type="text/javascript"></script>
- 	<div id="map_canvas_'.$rand.'" style="width: '.$width.'; height: '.$height.'"></div>
-	    <script type="text/javascript">
+	return '
+		<script src="http://maps.google.com/maps?file=api&v=2&sensor=false&key='.$apikey.'" type="text/javascript"></script>
+	<div id="map_canvas_'.$rand.'" style="width: '.$width.'; height: '.$height.'"></div>
+		<script type="text/javascript">
 
-   		var address = "'.$address.'";
+		var address = "'.$address.'";
 
 		// Create new map object
 		var map = new GMap2(document.getElementById("map_canvas_'.$rand.'"));
@@ -178,54 +179,52 @@ function ufandshands_googlemap_shortcode( $atts ) {
 		map.addControl(new GSmallMapControl());
 		map.addControl(new GMapTypeControl());
 
-                // Create new geocoding object
-               var geocoder = new GClientGeocoder();
+				// Create new geocoding object
+			   var geocoder = new GClientGeocoder();
 
-               // Retrieve location information, pass it to addToMap()
-               geocoder.getLocations(address, addToMap);
+			   // Retrieve location information, pass it to addToMap()
+			   geocoder.getLocations(address, addToMap);
 
-               function addToMap(response)
-               {
-              	 // Retrieve the object
-              	 place = response.Placemark[0];
+			   function addToMap(response)
+			   {
+				 // Retrieve the object
+				 place = response.Placemark[0];
 
-               	// Retrieve the latitude and longitude
-               	point = new GLatLng(place.Point.coordinates[1],
-                                         place.Point.coordinates[0]);
+				// Retrieve the latitude and longitude
+				point = new GLatLng(place.Point.coordinates[1],
+										 place.Point.coordinates[0]);
 
-               	// Center the map on this point
-               	map.setCenter(point, 13);
+				// Center the map on this point
+				map.setCenter(point, 13);
 
-               	// Create a marker
-               	marker = new GMarker(point);
+				// Create a marker
+				marker = new GMarker(point);
 
-               	// Add the marker to map
-               	map.addOverlay(marker);
+				// Add the marker to map
+				map.addOverlay(marker);
 
-               	// Add address information to marker
-              	marker.openInfoWindowHtml(place.address);
+				// Add address information to marker
+				marker.openInfoWindowHtml(place.address);
 		}
 
 	</script>
-    ';
+	';
 }
 add_shortcode('googlemap', 'ufandshands_googlemap_shortcode');
-
-
 
 // google graphs shortcode, courtesy of: http://blue-anvil.com/archives/8-fun-useful-shortcode-functions-for-wordpress/
 // example usage: [chart data="41.52,37.79,20.67,0.03" bg="F7F9FA" labels="Reffering+sites|Search+Engines|Direct+traffic|Other" colors="058DC7,50B432,ED561B,EDEF00" size="488x200" title="Traffic Sources" type="pie"]
 
 function ufandshands_chart_shortcode( $atts ) {
 	extract(shortcode_atts(array(
-	    'data' => '',
-	    'colors' => '',
-	    'size' => '650x250',
-	    'bg' => 'ffffff',
-	    'title' => '',
-	    'labels' => '',
-	    'advanced' => '',
-	    'type' => 'pie'
+		'data' => '',
+		'colors' => '',
+		'size' => '650x250',
+		'bg' => 'ffffff',
+		'title' => '',
+		'labels' => '',
+		'advanced' => '',
+		'type' => 'pie'
 	), $atts));
  
 	switch ($type) {
@@ -260,7 +259,6 @@ function ufandshands_chart_shortcode( $atts ) {
 	return '<img title="'.$title.'" src="http://chart.apis.google.com/chart?cht='.$charttype.''.$string.$advanced.'" alt="'.$title.'" />';
 }
 add_shortcode('chart', 'ufandshands_chart_shortcode');
-
 
 
 // insert RSS feed using shortcode
@@ -351,7 +349,7 @@ add_shortcode('html-sitemap', 'ufandshands_html_sitemap_shortcode_handler');
 // insert a tag cloud using a short code
 function ufandshands_tagcloud_shortcode($atts) {
 	if ($atts['format'] != 'columns') {  // render the tag cloud normally
-	    extract(shortcode_atts(array(
+		extract(shortcode_atts(array(
 		"taxonomy" => 'post_tag',
 		"num" => '45',
 		"format" => 'flat',
@@ -361,17 +359,17 @@ function ufandshands_tagcloud_shortcode($atts) {
 		"order" => 'ASC',
 		), $atts));
 
-	    $order = strtoupper($order);
-	    
-	    //ob_start();
-	    $tag_cloud = wp_tag_cloud(apply_filters('shortcode_widget_tag_cloud_args', array('taxonomy' => post_tag, 'echo' => false, 'number' => $num, 'format' => $format, 'smallest' => $smallest, 'largest' => $largest, 'orderby' => $orderby, 'order' => $order, "taxonomy" => $taxonomy) ));
-	    //$tag_cloud = ob_get_contents();
-	    //ob_end_clean();
+		$order = strtoupper($order);
+		
+		//ob_start();
+		$tag_cloud = wp_tag_cloud(apply_filters('shortcode_widget_tag_cloud_args', array('taxonomy' => post_tag, 'echo' => false, 'number' => $num, 'format' => $format, 'smallest' => $smallest, 'largest' => $largest, 'orderby' => $orderby, 'order' => $order, "taxonomy" => $taxonomy) ));
+		//$tag_cloud = ob_get_contents();
+		//ob_end_clean();
 	
-	    return $tag_cloud;
+		return $tag_cloud;
 	}
 	else { // render the tag in multi-column format
-	    return wp_mcTagMap_renderTags($atts);
+		return wp_mcTagMap_renderTags($atts);
 	}
 }
 add_shortcode('tagcloud', 'ufandshands_tagcloud_shortcode');
@@ -381,64 +379,64 @@ add_shortcode('tagcloud', 'ufandshands_tagcloud_shortcode');
 // ** functions for rendering multi-column tag clouds **
 function wp_mcTagMap_renderTags($options) {
 
-    extract(shortcode_atts(array(
+	extract(shortcode_atts(array(
 		"columns" => "4",
 		"taxonomy" => 'post_tag',
 		"show_empty" => "no",
-		    ), $options));
+			), $options));
 
-    if ($show_empty == "yes") {
+	if ($show_empty == "yes") {
 	$show_empty = "0";
-    }
-    if ($show_empty == "no") {
+	}
+	if ($show_empty == "no") {
 	$show_empty = "1";
-    }
+	}
 
 
-    
-    $list = '<!-- begin list --><div id="mcTagMap">';
-    $tags = get_terms($taxonomy, 'order=ASC&hide_empty=' . $show_empty . ''); // new code!
-    $groups = array();
+	
+	$list = '<!-- begin list --><div id="mcTagMap">';
+	$tags = get_terms($taxonomy, 'order=ASC&hide_empty=' . $show_empty . ''); // new code!
+	$groups = array();
 
 
-    if ($tags && is_array($tags)) {
+	if ($tags && is_array($tags)) {
 	foreach ($tags as $tag) {
-	    $first_letter = strtoupper($tag->name[0]);
-	    $groups[$first_letter][] = $tag;
+		$first_letter = strtoupper($tag->name[0]);
+		$groups[$first_letter][] = $tag;
 	}
 	if (!empty($groups)) {
-	    $count = 0;
-	    $howmany = count($groups);
+		$count = 0;
+		$howmany = count($groups);
 
-	    // this makes 2 columns
-	    if ($columns == 2) {
+		// this makes 2 columns
+		if ($columns == 2) {
 		$firstrow = ceil($howmany * 0.5);
 		$secondrow = ceil($howmany * 1);
 		$firstrown1 = ceil(($howmany * 0.5) - 1);
 		$secondrown1 = ceil(($howmany * 1) - 0);
-	    }
+		}
 
 
-	    //this makes 3 columns
-	    if ($columns == 3) {
+		//this makes 3 columns
+		if ($columns == 3) {
 		$firstrow = ceil($howmany * 0.33);
 		$secondrow = ceil($howmany * 0.66);
 		$firstrown1 = ceil(($howmany * 0.33) - 1);
 		$secondrown1 = ceil(($howmany * 0.66) - 1);
-	    }
+		}
 
-	    //this makes 4 columns
-	    if ($columns == 4) {
+		//this makes 4 columns
+		if ($columns == 4) {
 		$firstrow = ceil($howmany * 0.25);
 		$secondrow = ceil(($howmany * 0.5) + 1);
 		$firstrown1 = ceil(($howmany * 0.25) - 1);
 		$secondrown1 = ceil(($howmany * 0.5) - 0);
 		$thirdrow = ceil(($howmany * 0.75) - 0);
 		$thirdrow1 = ceil(($howmany * 0.75) - 1);
-	    }
+		}
 
-	    //this makes 5 columns
-	    if ($columns == 5) {
+		//this makes 5 columns
+		if ($columns == 5) {
 		$firstrow = ceil($howmany * 0.2);
 		$firstrown1 = ceil(($howmany * 0.2) - 1);
 		$secondrow = ceil(($howmany * 0.4));
@@ -447,28 +445,28 @@ function wp_mcTagMap_renderTags($options) {
 		$thirdrow1 = ceil(($howmany * 0.6) - 1);
 		$fourthrow = ceil(($howmany * 0.8) - 0);
 		$fourthrow1 = ceil(($howmany * 0.8) - 1);
-	    }
+		}
 
-	    foreach ($groups as $letter => $tags) {
+		foreach ($groups as $letter => $tags) {
 		if ($columns == 2) {
-		    if ($count == 0 || $count == $firstrow || $count == $secondrow) {
+			if ($count == 0 || $count == $firstrow || $count == $secondrow) {
 			$list .= wp_mcTagMap_renderDivider($count, $firstrow);
-		    }
+			}
 		}
 		if ($columns == 3) {
-		    if ($count == 0 || $count == $firstrow || $count == $secondrow) {
+			if ($count == 0 || $count == $firstrow || $count == $secondrow) {
 			$list .= wp_mcTagMap_renderDivider($count, $secondrow);
-		    }
+			}
 		}
 		if ($columns == 4) {
-		    if ($count == 0 || $count == $firstrow || $count == $secondrow || $count == $thirdrow) {
+			if ($count == 0 || $count == $firstrow || $count == $secondrow || $count == $thirdrow) {
 			$list .= wp_mcTagMap_renderDivider($count, $thirdrow);
-		    }
+			}
 		}
 		if ($columns == 5) {
-		    if ($count == 0 || $count == $firstrow || $count == $secondrow || $count == $thirdrow || $count == $fourthrow){
+			if ($count == 0 || $count == $firstrow || $count == $secondrow || $count == $thirdrow || $count == $fourthrow){
 			$list .= wp_mcTagMap_renderDivider($count, $fourthrow);
-		    }
+			}
 		}
 
 		$list .= '<div class="tagindex">';
@@ -479,14 +477,14 @@ function wp_mcTagMap_renderTags($options) {
 		$list .="\n";
 		$i = 0;
 		foreach ($tags as $tag) {
-		    $url = get_term_link( intval($tag->term_id), $tag->taxonomy );
-		    $name = apply_filters('the_title', $tag->name);
-		    //	$name = ucfirst($name);
-		    $i++;
-		    $counti = $i;
-		    
+			$url = get_term_link( intval($tag->term_id), $tag->taxonomy );
+			$name = apply_filters('the_title', $tag->name);
+			//	$name = ucfirst($name);
+			$i++;
+			$counti = $i;
+			
 		$list .= '<li><a title="' . $name . '" href="' . $url . '">' . $name . '</a></li>';
-		    $list .="\n";
+			$list .="\n";
 		}
 
 		$list .= '</ul>';
@@ -494,44 +492,44 @@ function wp_mcTagMap_renderTags($options) {
 		$list .= '</div>';
 		$list .="\n\n";
 		if ($columns == 3 || $columns == 2) {
-		    if ($count == $firstrown1 || $count == $secondrown1) {
+			if ($count == $firstrown1 || $count == $secondrown1) {
 			$list .= "</div>";
-		    }
+			}
 		}
 		if ($columns == 4) {
-		    if ($count == $firstrown1 || $count == $secondrown1 || $count == $thirdrow1) {
+			if ($count == $firstrown1 || $count == $secondrown1 || $count == $thirdrow1) {
 			$list .= "</div>";
-		    }
+			}
 		}
 		if ($columns == 5) {
-		    if ($count == $firstrown1 || $count == $secondrown1 || $count == $thirdrow1 || $count == $fourthrow1) {
+			if ($count == $firstrown1 || $count == $secondrown1 || $count == $thirdrow1 || $count == $fourthrow1) {
 			$list .= "</div>";
-		    }
+			}
 		}
 
 		$count++;
-	    }
+		}
 	}
 	$list .="</div>";
 	$list .= "<div style='clear: both;'></div></div><!-- end list -->";
-    }
-    else
+	}
+	else
 	$list .= '<p>Sorry, but no tags were found</p>';
 
-    return $list;
+	return $list;
 }
 
 function wp_mcTagMap_renderDivider($count, $rowNum) {
-    $divider = "";
-    if ($count == $rowNum) {
+	$divider = "";
+	if ($count == $rowNum) {
 	$divider .= "\n<div class='holdleft noMargin'>\n";
 	$divider .="\n";
-    } else {
+	} else {
 	$divider .= "\n<div class='holdleft'>\n";
 	$divider .="\n";
-    }
-    
-    return $divider;
+	}
+	
+	return $divider;
 }
 
 // ** end functions for rendering multi-column tag clouds **
