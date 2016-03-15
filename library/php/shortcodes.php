@@ -626,11 +626,10 @@ function be_display_posts_shortcode($atts) {
 	$inner = '';
 	while ( $listing->have_posts() ): $listing->the_post(); global $post;
 			
-		$title = '<h3><a class="title" href="'. get_permalink() .'">'. get_the_title() .'</a></h3>';
-		
-		
 		if ( $image_size && has_post_thumbnail() )  $image = '<a class="image" href="'. get_permalink() .'">'. get_the_post_thumbnail($post->ID, $image_size).'</a> ';
 		else $image = '';
+
+		$title = '<h2><a href="'. get_permalink() .'">'. get_the_title() .'</a></h2>';
 		
 		
 		if ($include_date) $date = '<p class="published">'. get_the_date($dateformat) .'</p>';
@@ -647,7 +646,7 @@ function be_display_posts_shortcode($atts) {
 		}
 		else $content = '';
 		
-		$output = '<' . $inner_wrapper . ' class="listing-item">' . $image . $title . $date . $excerpt . $content . '</' . $inner_wrapper . '>';
+		$output = '<' . $inner_wrapper . ' class="entry">' . $image . $title . $date . $excerpt . $content . '</' . $inner_wrapper . '>';
 		
 		$inner .= apply_filters( 'display_posts_shortcode_output', $output, $atts, $image, $title, $date, $excerpt, $content, $inner_wrapper );
 		

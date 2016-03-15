@@ -353,7 +353,7 @@ header {
 }
 
 #header-actionitem {
-	border-bottom: 1px solid #ca561f;
+	border-bottom: 1px solid $dark-orange;
 	bottom: 0;
 	position: absolute;
 	right: 25px;
@@ -1078,7 +1078,7 @@ pre {background:$very-light-blue; padding:15px 30px;}
 		font-size: 1.1em;
 		padding:10px;
 		text-align:center;
-		border-top: 2px solid $b-orange;
+		border-top: 2px solid $dark-orange;
 }
 
 #mobile-modal #submit{

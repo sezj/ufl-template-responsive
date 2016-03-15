@@ -5,7 +5,7 @@
     <div id="content" class="container">
 
       <article id="main-content" class="span-17" role="main">
-        <div class="box">
+        <div class="display-posts-listing">
 
         <?php if (have_posts()) : ?>			
 

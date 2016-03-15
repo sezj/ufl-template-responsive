@@ -1,20 +1,5 @@
 /*!
 PRIMARY NAVIGATION - DROP DOWN
 Built using navigation.scss
-----------------------------------------------------------------------*/
-#primary-nav li {
-  position: relative; }
-#primary-nav .children {
-  width: 200px;
-  top: 44px;
-  position: absolute;
-  z-index: 99999;
-  border: 3px solid #FFFFFF;
-  border-top: none;
-  left: -2px;
-  padding: 4px 0; }
-  #primary-nav .children li {
-    border-top: 1px solid #336699;
-    background-color: #00529b; }
-
+----------------------------------------------------------------------*/#primary-nav li{position:relative}#primary-nav .children{width:200px;top:44px;position:absolute;z-index:99999;border:3px solid #fff;border-top:none;left:-2px;padding:4px 0}#primary-nav .children li{border-top:1px solid #369;background-color:#00529b}
 /*# sourceMappingURL=navigation.css.map */

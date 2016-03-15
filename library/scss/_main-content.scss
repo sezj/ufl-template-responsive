@@ -349,7 +349,8 @@ tbody tr.even td {background:$very-light-blue;}
 /*-  SEARCH RESULTS & ARCHIVES
 ----------------------------------------------------------------------*/
 .search .entry,
-.archive .entry {
+.archive .entry,
+.display-posts-listing .entry {
 	clear: both;
 	overflow: auto;
 	border-bottom: 1px dotted $light-blue;
@@ -406,9 +407,10 @@ tbody tr.even td {background:$very-light-blue;}
 		padding:none;
 	}
 	.image {
-		float:left;
+		
 		border-bottom:none;
 		img {
+			float:left;
 			margin:0 20px 20px 0;
 		}
 	}
