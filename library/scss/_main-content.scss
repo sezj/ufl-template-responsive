@@ -48,6 +48,9 @@ article {
 	}
 }
 #main-content {
+	h4 {
+		text-transform: uppercase;
+	}
 	aside {
 		@extend .sidebar_widget;
 		width:30%;
