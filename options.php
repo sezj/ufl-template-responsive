@@ -223,7 +223,7 @@ function optionsframework_options() {
 			"desc" => "Enter the meta description for your home page.",
 			"id" => "opt_meta_description",
 			"std" => "",
-			"type" => "text");
+			"type" => "textarea");
 
 	$options[] = array( "name" => "Feature Slider",
 			"desc" => "These options edit the featured slider.",
