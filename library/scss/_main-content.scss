@@ -64,21 +64,21 @@ article {
 			background-color: $white;
 			border-bottom: 1px solid $black-75;
 		}
-		&.pullquote {
-			@extend blockquote;
-			background-image:none;
-			padding-top: 1em;
-			margin-top:0;
-			margin-bottom:0;
-		}
-		&.pullquote-full {
-			@extend .pullquote;
-			width:auto;
-			float:none;
-		}
 	}
 	li {
 		margin-bottom: .5em;
+	}
+	.pullquote {
+		@extend blockquote;
+		background-image:none;
+		padding-top: 1em;
+		margin-top:0;
+		margin-bottom:0;
+	}
+	.pullquote-full {
+		@extend .pullquote;
+		width:auto;
+		float:none;
 	}
 	.wp-post-image, .size-full, .size-thumbnail, .avatar {
 	padding: 4px; 
