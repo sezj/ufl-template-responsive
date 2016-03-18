@@ -263,6 +263,8 @@ function ufandshands_header_adder() {
 		if (!empty($meta_excerpt)) {
 			echo '<meta name="description" content="' . htmlentities( $meta_excerpt ) . '" />'."\n";
 		}
+	} else if ( is_home() || is_front_page() ) {
+			echo '<meta name="description" content="' . htmlentities( of_get_option('opt_meta_description') ) . '" />'."\n";
 	}
 	
 	// Facebook Insights fb:admins code allows you to enable this site to be analyzed by Facebook Insights
