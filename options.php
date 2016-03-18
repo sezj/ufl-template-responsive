@@ -216,8 +216,18 @@ function optionsframework_options() {
 
 	// Homepage Layout
 	$options[] = array( "name" => "Homepage",
-			"desc" => "Options for modifying the homepage. The below options edit the featured slider.",
+			"desc" => "Options for modifying the homepage.",
 			"type" => "heading");
+
+	$options[] = array( "name" => "Meta description",
+			"desc" => "Enter the meta description for your home page.",
+			"id" => "opt_meta_description",
+			"std" => "",
+			"type" => "text");
+
+	$options[] = array( "name" => "Feature Slider",
+			"desc" => "These options edit the featured slider.",
+			"type" => "info");
 		 
 	$options[] = array( "name" => "Select a Category",
 			"desc" => "Choose a category from which featured posts are drawn. To remove the featured content area, simply set this dropdown to 'Choose a Category'",
