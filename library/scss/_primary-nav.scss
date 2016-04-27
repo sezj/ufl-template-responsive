@@ -121,6 +121,10 @@ PRIMARY NAVIGATION
 	border: none;
 	color: $dark-blue;
 }
+#primary-nav li.current_page_ancestor > a:first-child {
+	border: none;
+	color: $white;
+}
 #primary-nav .parent a {
 	&:after {
 		content: " \25E2";
