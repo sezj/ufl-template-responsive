@@ -42,8 +42,6 @@
 						<a href="https://twitter.com/share" class="twitter-share-button" data-via="FloridaEngineer" data-count="horizontal">Tweet</a>
 					</div>
 					<div style="margin-left: 20px;"><script type="IN/Share"></script></div>
-					
-					<!-- <div><g:plusone size="medium"></g:plusone></div> -->
 				</div>
 				
 			  <div class="single-navigation clear">
