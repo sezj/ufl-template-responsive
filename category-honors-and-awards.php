@@ -12,21 +12,14 @@
 
 					<?php 
 							// show the Honors and Awards category description
-							echo category_description( $category_id );
-
-							// show number of posts in Honors and Awards category
-							$category = get_category( get_query_var( 'cat' ) );
-							$cat_id = $category->cat_ID;
-							$args= array(
-								'include' => $cat_id
-							  );
-
-							$categories=get_categories($args);
-							foreach($categories as $category) {
-							 echo '<p class="lead">Gator Engineers have earned ' . esc_html( $category->count ) . ' '. esc_html( $category->name ) . '...and counting!</p> ';
-							}
+							echo '<p class="lead">' . category_description( $category_id ) . '</p>';
 					?>
-					<hr />
+					<div class="award-logo">
+						<img src="https://www.eng.ufl.edu/wp-content/uploads/2016/07/asee-logo.png" alt="American Society for Engineering Education logo" />
+						<img src="https://www.eng.ufl.edu/wp-content/uploads/2016/07/nae-logo.png" alt="National Academy of Engineering logo" />
+						<img src="https://www.eng.ufl.edu/wp-content/uploads/2016/07/nih-logo.png" alt="National Institutes of Health logo" />
+						<img src="https://www.eng.ufl.edu/wp-content/uploads/2016/07/nsf-logo.png" alt="National Science Foundation logo" />
+					</div>
 
 					<?php 
  					// show subcategory posts
@@ -68,8 +61,8 @@
 			 
 					<?php endwhile; endif; ?>
 
-								<div class="single-navigation clear">
-					  				<div class="nav-next"><a href="<?php echo get_category_link($sub_cat->term_id); ?>" title="<?php echo $sub_cat->name; ?>">Show all <?php echo $sub_cat->count; ?> <?php echo $sub_cat->name; ?></a></div>
+								<div class="show-all clear">
+					  				<div class="nav-next"><a href="<?php echo get_category_link($sub_cat->term_id); ?>" title="<?php echo $sub_cat->name; ?>">Show all <?php echo $sub_cat->name; ?></a></div>
 					  			</div>
 
 			 
