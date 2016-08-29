@@ -944,8 +944,10 @@ if (!empty($ufandshands_alternate_logo)) {
 													background-image: url(" . $ufandshands_alternate_logo . ");
 													background-repeat: no-repeat;
 													background-attachment: scroll;
+													background-size: contain;
 													height: " . $alternative_site_logo_height . "px;
 													width: " . $alternative_site_logo_width . "px;
+													margin-bottom: 0px;
 													margin-right: 10px;	}";
 		$alternate_logo_css .= "</style>";
 
