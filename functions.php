@@ -451,10 +451,9 @@ function remove_featured_image_field() {
 /* 	Gravity Forms custom code and enhancements
 /* ----------------------------------------------------------------------------------- */
 
-if ( class_exists( 'GFCommon' ) ) {
+if ( class_exists( 'GFCommon' ) && file_exists('plugins/gravityforms/gf-addons.php')) {
     include ('plugins/gravityforms/gf-addons.php');	
 }
-
 /* ----------------------------------------------------------------------------------- */
 /* 	Search Text
 /* ----------------------------------------------------------------------------------- */
