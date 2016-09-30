@@ -52,9 +52,9 @@ $opt_footer_widgets_visibility = of_get_option("opt_footer_widgets_visibility");
 
 						$contact_phone = of_get_option("opt_contact_phone");
 						if (!empty($contact_phone)) {
-							echo "Phone: " . $contact_phone . "<br /><a href=\"/about/contact/\">Full list of office phone numbers</a><br />";
+							echo "Phone: " . $contact_phone . "<br /><a href=\"https://www.eng.ufl.edu/about/contact/\">Full list of office phone numbers</a><br />";
 						} else {
-							echo "<a href=\"/about/contact/\">List of office phone numbers</a><br />";
+							echo "<a href=\"https://www.eng.ufl.edu/about/contact/\">List of office phone numbers</a><br />";
 						}
 
 						$contact_fax = of_get_option("opt_contact_fax");
